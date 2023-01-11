@@ -40,11 +40,18 @@ struct UserData {
     }
     
     public mutating func addPair(pair: Pair) {
-        let currentPairList = self.pairList
+        let currentPairList = pairList
         if (!currentPairList.map {$0.symbol}.contains(pair.symbol)) {
-            self.pairList = currentPairList + [pair]
+            pairList = currentPairList + [pair]
         }
     }
+
+    public mutating func removePair(at offsets: IndexSet) {
+        var currentPairList = pairList
+        currentPairList.remove(atOffsets: offsets)
+        pairList = currentPairList
+    }
+
 }
 
 var userData = UserData()

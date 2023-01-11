@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct CurrenciesView: View {
+    @State private var myPairs = userData.pairList
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                ForEach(myPairs, id: \.self) { pair in
+                    NavigationLink {
+                        Text("\(pair.currency_base) (\(pair.symbol))")
+                    } label: {
+                        Text("\(pair.currency_base) (\(pair.symbol)) <price>")
+                    }
+                }
+                .onDelete(perform: deleteItems)
+            }
+            .disabled(myPairs.isEmpty)
+            .navigationTitle("Currencies")
+        }
+    }
+    
+    func deleteItems(at offsets: IndexSet) {
+        userData.removePair(at: offsets)
+        myPairs.remove(atOffsets: offsets)
     }
 }
 
