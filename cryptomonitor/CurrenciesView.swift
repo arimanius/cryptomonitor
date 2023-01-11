@@ -8,28 +8,40 @@
 import SwiftUI
 
 struct CurrenciesView: View {
-    @State private var myPairs = userData.pairList
-    
+    @State private var showingSheet = false
+    @ObservedObject var settings = SettingsStore()
+
     var body: some View {
         NavigationView {
             List {
-                ForEach(myPairs, id: \.self) { pair in
+                ForEach($settings.pairList, id: \.self) { pair in
                     NavigationLink {
-                        Text("\(pair.currency_base) (\(pair.symbol))")
+                        Text("\(pair.currency_base.wrappedValue) (\(pair.symbol.wrappedValue))")
                     } label: {
-                        Text("\(pair.currency_base) (\(pair.symbol)) <price>")
+                        Text("\(pair.currency_base.wrappedValue) (\(pair.symbol.wrappedValue)) <price>")
                     }
                 }
                 .onDelete(perform: deleteItems)
             }
-            .disabled(myPairs.isEmpty)
+            .disabled($settings.pairList.isEmpty)
             .navigationTitle("Currencies")
+            .toolbar {
+                Button {
+                    showingSheet.toggle()
+                } label: {
+                    Image(systemName: "plus.circle")
+                }
+                .id(UUID())
+            }
+            .fullScreenCover(isPresented: $showingSheet) {
+                AddPairView()
+            }
+            .environmentObject(settings)
         }
     }
     
     func deleteItems(at offsets: IndexSet) {
-        userData.removePair(at: offsets)
-        myPairs.remove(atOffsets: offsets)
+        settings.pairList.remove(atOffsets: offsets)
     }
 }
 

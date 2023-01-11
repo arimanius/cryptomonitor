@@ -7,52 +7,24 @@
 
 import Foundation
 
-struct UserData {
-    private static func getValue(key: String) -> String {
-        return UserDefaults.standard.string(forKey: key) ?? ""
-    }
-    
-    private static func setValue(key: String, value: String) {
-        UserDefaults.standard.set(value, forKey: key)
-    }
-    
-    public var pairList: [Pair] {
+extension UserDefaults {
+    var pairList: [Pair] {
         get {
-            let value = UserData.getValue(key: "userPairList")
-            let data = Data(value.utf8)
-            let decoder = JSONDecoder()
-            do {
-                return try decoder.decode([Pair].self, from: data)
-            } catch {
-                return []
+            if let data = UserDefaults.standard.value(forKey: "pairList") as? Data {
+                return (try? PropertyListDecoder().decode([Pair].self, from: data))!
             }
+            return []
         }
         set {
-            let encoder = JSONEncoder()
-            do {
-                let data = try encoder.encode(newValue)
-                let value = String(decoding: data, as: UTF8.self)
-                UserData.setValue(key: "userPairList", value: value)
-            } catch {
-                fatalError("Cannot encode data")
-            }
+            set(try? PropertyListEncoder().encode(newValue), forKey: "pairList")
         }
     }
-    
-    public mutating func addPair(pair: Pair) {
-        let currentPairList = pairList
-        if (!currentPairList.map {$0.symbol}.contains(pair.symbol)) {
-            pairList = currentPairList + [pair]
-        }
-    }
-
-    public mutating func removePair(at offsets: IndexSet) {
-        var currentPairList = pairList
-        currentPairList.remove(atOffsets: offsets)
-        pairList = currentPairList
-    }
-
 }
 
-var userData = UserData()
-
+class SettingsStore: ObservableObject{
+    @Published var pairList: [Pair] = UserDefaults.standard.pairList {
+        didSet {
+            UserDefaults.standard.pairList = self.pairList
+        }
+    }
+}

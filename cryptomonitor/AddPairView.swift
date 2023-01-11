@@ -9,30 +9,34 @@ import SwiftUI
 
 struct AddPairView: View {
     @State private var searchText = ""
-    @State private var pairToAdd: Pair? = nil
+    @EnvironmentObject private var settings: SettingsStore
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(searchResults, id: \.self) { pair in
                     Button(action: {
-                        pairToAdd = pair
+                        settings.pairList = settings.pairList + [pair]
                     }) {
                         Text("\(pair.currency_base) (\(pair.symbol))")
                     }
                 }
             }
             .navigationTitle("Add a currency")
+            .toolbar {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "multiply.circle")
+                }
+            }
         }
         .searchable(text: $searchText, prompt: "Look for a currency")
     }
 
     var searchResults: [Pair] {
-        if (pairToAdd != nil) {
-            userData.addPair(pair: pairToAdd!)
-            pairToAdd = nil
-        }
-        let myPairs = pairs.filter {!userData.pairList.map {$0.symbol}.contains($0.symbol) }
+        let myPairs = pairs.filter {!settings.pairList.map {$0.symbol}.contains($0.symbol) }
         if searchText.isEmpty {
             return myPairs
         } else {
@@ -44,5 +48,6 @@ struct AddPairView: View {
 struct AddPairView_Previews: PreviewProvider {
     static var previews: some View {
         AddPairView()
+            .environmentObject(SettingsStore())
     }
 }
