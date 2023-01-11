@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0C9DAB4296F3E8500C42680 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C9DAB3296F3E8500C42680 /* UserData.swift */; };
 		E0E094F7296EC5230049542C /* cryptomonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E094F6296EC5230049542C /* cryptomonitorApp.swift */; };
 		E0E094FB296EC5270049542C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0E094FA296EC5270049542C /* Assets.xcassets */; };
 		E0E094FE296EC5270049542C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0E094FD296EC5270049542C /* Preview Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E0C9DAB3296F3E8500C42680 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		E0E094F3296EC5230049542C /* cryptomonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptomonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0E094F6296EC5230049542C /* cryptomonitorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cryptomonitorApp.swift; sourceTree = "<group>"; };
 		E0E094FA296EC5270049542C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				E0E09514296F03740049542C /* Models */,
 				E0E09513296F03550049542C /* Views */,
 				E0E094F6296EC5230049542C /* cryptomonitorApp.swift */,
+				E0C9DAB3296F3E8500C42680 /* UserData.swift */,
 				E0E094FA296EC5270049542C /* Assets.xcassets */,
 				E0E094FC296EC5270049542C /* Preview Content */,
 			);
@@ -182,6 +185,7 @@
 			files = (
 				E0E09517296F230D0049542C /* AddPairView.swift in Sources */,
 				E0E0950B296EC99F0049542C /* CurrenciesView.swift in Sources */,
+				E0C9DAB4296F3E8500C42680 /* UserData.swift in Sources */,
 				E0E09507296EC7F30049542C /* ProfileView.swift in Sources */,
 				E0E09505296EC7000049542C /* MainView.swift in Sources */,
 				E0E094F7296EC5230049542C /* cryptomonitorApp.swift in Sources */,
