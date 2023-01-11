@@ -13,6 +13,10 @@
 		E0E09505296EC7000049542C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E09504296EC7000049542C /* MainView.swift */; };
 		E0E09507296EC7F30049542C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E09506296EC7F30049542C /* ProfileView.swift */; };
 		E0E0950B296EC99F0049542C /* CurrenciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E0950A296EC99F0049542C /* CurrenciesView.swift */; };
+		E0E0950D296F01CA0049542C /* pairs.json in Resources */ = {isa = PBXBuildFile; fileRef = E0E0950C296F01CA0049542C /* pairs.json */; };
+		E0E0950F296F01DE0049542C /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E0950E296F01DE0049542C /* Pair.swift */; };
+		E0E09511296F02C80049542C /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E09510296F02C80049542C /* ModelData.swift */; };
+		E0E09517296F230D0049542C /* AddPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E09516296F230D0049542C /* AddPairView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +27,10 @@
 		E0E09504296EC7000049542C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E0E09506296EC7F30049542C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E0E0950A296EC99F0049542C /* CurrenciesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesView.swift; sourceTree = "<group>"; };
+		E0E0950C296F01CA0049542C /* pairs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pairs.json; path = cryptomonitor/pairs.json; sourceTree = SOURCE_ROOT; };
+		E0E0950E296F01DE0049542C /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
+		E0E09510296F02C80049542C /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		E0E09516296F230D0049542C /* AddPairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPairView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +63,10 @@
 		E0E094F5296EC5230049542C /* cryptomonitor */ = {
 			isa = PBXGroup;
 			children = (
+				E0E09515296F03810049542C /* Resources */,
+				E0E09514296F03740049542C /* Models */,
+				E0E09513296F03550049542C /* Views */,
 				E0E094F6296EC5230049542C /* cryptomonitorApp.swift */,
-				E0E09504296EC7000049542C /* MainView.swift */,
-				E0E0950A296EC99F0049542C /* CurrenciesView.swift */,
-				E0E09506296EC7F30049542C /* ProfileView.swift */,
 				E0E094FA296EC5270049542C /* Assets.xcassets */,
 				E0E094FC296EC5270049542C /* Preview Content */,
 			);
@@ -71,6 +79,34 @@
 				E0E094FD296EC5270049542C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E0E09513296F03550049542C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E0E09504296EC7000049542C /* MainView.swift */,
+				E0E0950A296EC99F0049542C /* CurrenciesView.swift */,
+				E0E09506296EC7F30049542C /* ProfileView.swift */,
+				E0E09516296F230D0049542C /* AddPairView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E0E09514296F03740049542C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E0E0950E296F01DE0049542C /* Pair.swift */,
+				E0E09510296F02C80049542C /* ModelData.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E0E09515296F03810049542C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E0E0950C296F01CA0049542C /* pairs.json */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +169,7 @@
 			files = (
 				E0E094FE296EC5270049542C /* Preview Assets.xcassets in Resources */,
 				E0E094FB296EC5270049542C /* Assets.xcassets in Resources */,
+				E0E0950D296F01CA0049542C /* pairs.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,10 +180,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0E09517296F230D0049542C /* AddPairView.swift in Sources */,
 				E0E0950B296EC99F0049542C /* CurrenciesView.swift in Sources */,
 				E0E09507296EC7F30049542C /* ProfileView.swift in Sources */,
 				E0E09505296EC7000049542C /* MainView.swift in Sources */,
 				E0E094F7296EC5230049542C /* cryptomonitorApp.swift in Sources */,
+				E0E0950F296F01DE0049542C /* Pair.swift in Sources */,
+				E0E09511296F02C80049542C /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

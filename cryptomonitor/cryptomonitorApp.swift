@@ -11,7 +11,7 @@ import SwiftUI
 struct cryptomonitorApp: App {
     var body: some Scene {
         WindowGroup {
-            CurrenciesView()
+            MainView()
         }
     }
 }
