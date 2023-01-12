@@ -9,8 +9,8 @@ import Foundation
 
 struct OHLC: Hashable, Codable {
     var datetime: Date
-    var open: Float
-    var high: Float
-    var low: Float
-    var close: Float
+    var open: String
+    var high: String
+    var low: String
+    var close: String
 }
