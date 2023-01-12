@@ -10,18 +10,25 @@ import SwiftUI
 struct CurrenciesView: View {
     @State private var showingSheet = false
     @ObservedObject var settings = SettingsStore()
-
+    @StateObject var vm = OHLCViewModel()
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach($settings.pairList, id: \.self) { pair in
+                ForEach(vm.data, id: \.self) { data in
                     NavigationLink {
-                        Text("\(pair.currency_base.wrappedValue) (\(pair.symbol.wrappedValue))")
+                        CurrencyView(pair: data.pair)
                     } label: {
-                        Text("\(pair.currency_base.wrappedValue) (\(pair.symbol.wrappedValue)) <price>")
+                        Text("\(data.pair.currency_base) (\(data.pair.symbol)): ")
+                    }
+                    .onAppear() {
+                        
                     }
                 }
                 .onDelete(perform: deleteItems)
+            }
+            .task {
+                await vm.getOHLCs(pairs: settings.pairList)
             }
             .disabled($settings.pairList.isEmpty)
             .navigationTitle("Currencies")
@@ -31,7 +38,6 @@ struct CurrenciesView: View {
                 } label: {
                     Image(systemName: "plus.circle")
                 }
-                .id(UUID())
             }
             .fullScreenCover(isPresented: $showingSheet) {
                 AddPairView()
@@ -48,5 +54,24 @@ struct CurrenciesView: View {
 struct CurrenciesView_Previews: PreviewProvider {
     static var previews: some View {
         CurrenciesView()
+    }
+}
+
+struct PairOHLC: Hashable, Codable {
+    var pair: Pair
+    var ohcl: OHLC
+}
+
+class OHLCViewModel: ObservableObject {
+    @Published var data: [PairOHLC] = []
+    
+    func getOHLCs(pairs: [Pair]) async {
+        guard let data = try? await Api().loadToday(pairs: pairs) else {
+            self.data = []
+            return
+        }
+        self.data = pairs.map { pair in
+            PairOHLC(pair: pair, ohcl: data[pair.symbol]!)
+        }
     }
 }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E01AFFD72970097000C361BA /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AFFD62970097000C361BA /* CurrencyView.swift */; };
+		E01AFFD92970138600C361BA /* OHLC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AFFD82970138600C361BA /* OHLC.swift */; };
+		E01AFFDB297016CA00C361BA /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AFFDA297016CA00C361BA /* Api.swift */; };
+		E01AFFDE2970174B00C361BA /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AFFDD2970174B00C361BA /* Config.swift */; };
+		E01AFFE029701F9900C361BA /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = E01AFFDF29701F9900C361BA /* config.json */; };
 		E0C9DAB4296F3E8500C42680 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C9DAB3296F3E8500C42680 /* UserData.swift */; };
 		E0E094F7296EC5230049542C /* cryptomonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E094F6296EC5230049542C /* cryptomonitorApp.swift */; };
 		E0E094FB296EC5270049542C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0E094FA296EC5270049542C /* Assets.xcassets */; };
@@ -21,6 +26,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E01AFFD62970097000C361BA /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
+		E01AFFD82970138600C361BA /* OHLC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHLC.swift; sourceTree = "<group>"; };
+		E01AFFDA297016CA00C361BA /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		E01AFFDD2970174B00C361BA /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		E01AFFDF29701F9900C361BA /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		E0C9DAB3296F3E8500C42680 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		E0E094F3296EC5230049542C /* cryptomonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptomonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0E094F6296EC5230049542C /* cryptomonitorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cryptomonitorApp.swift; sourceTree = "<group>"; };
@@ -70,6 +80,7 @@
 				E0E09513296F03550049542C /* Views */,
 				E0E094F6296EC5230049542C /* cryptomonitorApp.swift */,
 				E0C9DAB3296F3E8500C42680 /* UserData.swift */,
+				E01AFFDA297016CA00C361BA /* Api.swift */,
 				E0E094FA296EC5270049542C /* Assets.xcassets */,
 				E0E094FC296EC5270049542C /* Preview Content */,
 			);
@@ -91,6 +102,7 @@
 				E0E0950A296EC99F0049542C /* CurrenciesView.swift */,
 				E0E09506296EC7F30049542C /* ProfileView.swift */,
 				E0E09516296F230D0049542C /* AddPairView.swift */,
+				E01AFFD62970097000C361BA /* CurrencyView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -100,6 +112,8 @@
 			children = (
 				E0E0950E296F01DE0049542C /* Pair.swift */,
 				E0E09510296F02C80049542C /* ModelData.swift */,
+				E01AFFD82970138600C361BA /* OHLC.swift */,
+				E01AFFDD2970174B00C361BA /* Config.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -108,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				E0E0950C296F01CA0049542C /* pairs.json */,
+				E01AFFDF29701F9900C361BA /* config.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -171,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0E094FE296EC5270049542C /* Preview Assets.xcassets in Resources */,
+				E01AFFE029701F9900C361BA /* config.json in Resources */,
 				E0E094FB296EC5270049542C /* Assets.xcassets in Resources */,
 				E0E0950D296F01CA0049542C /* pairs.json in Resources */,
 			);
@@ -188,8 +204,12 @@
 				E0C9DAB4296F3E8500C42680 /* UserData.swift in Sources */,
 				E0E09507296EC7F30049542C /* ProfileView.swift in Sources */,
 				E0E09505296EC7000049542C /* MainView.swift in Sources */,
+				E01AFFDE2970174B00C361BA /* Config.swift in Sources */,
+				E01AFFDB297016CA00C361BA /* Api.swift in Sources */,
+				E01AFFD92970138600C361BA /* OHLC.swift in Sources */,
 				E0E094F7296EC5230049542C /* cryptomonitorApp.swift in Sources */,
 				E0E0950F296F01DE0049542C /* Pair.swift in Sources */,
+				E01AFFD72970097000C361BA /* CurrencyView.swift in Sources */,
 				E0E09511296F02C80049542C /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,7 @@
 import Foundation
 
 var pairs: [Pair] = load("pairs.json")
+var config: Config = load("config.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
@@ -24,10 +25,16 @@ func load<T: Decodable>(_ filename: String) -> T {
     }
 
     do {
-        let decoder = JSONDecoder()
-        return try decoder.decode(T.self, from: data)
+        return try parse(data: data)
     } catch {
         fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
     }
-    
+}
+
+func parse<T: Decodable>(data: Data) throws -> T {
+    let decoder = JSONDecoder()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    decoder.dateDecodingStrategy = .formatted(dateFormatter)
+    return try decoder.decode(T.self, from: data)
 }
