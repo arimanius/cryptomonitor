@@ -19,12 +19,29 @@ extension UserDefaults {
             set(try? PropertyListEncoder().encode(newValue), forKey: "pairList")
         }
     }
+    
+    var username: String {
+        get {
+            if let data = UserDefaults.standard.value(forKey: "username") as? String {
+                return data
+            }
+            return ""
+        }
+        set {
+            set(newValue, forKey: "username")
+        }
+    }
 }
 
 class SettingsStore: ObservableObject{
     @Published var pairList: [Pair] = UserDefaults.standard.pairList {
         didSet {
             UserDefaults.standard.pairList = self.pairList
+        }
+    }
+    @Published var username: String = UserDefaults.standard.username {
+        didSet {
+            UserDefaults.standard.username = self.username
         }
     }
 }

@@ -1,53 +1,51 @@
 //
-//  ProfileView.swift
+//  EditProfileView.swift
 //  cryptomonitor
 //
-//  Created by Ahmad on 10/21/1401 AP.
+//  Created by Pouya Esmaili on 1/13/23.
 //
 
 import SwiftUI
 
-struct ProfileView: View {
-    @State private var showingSheet = false
+struct EditProfileView: View {
     @ObservedObject var settings = SettingsStore()
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView {
             VStack{
                 HStack {
+                    Spacer(minLength: 20)
                     HStack(alignment: .center, spacing: 10) {
                         Image(systemName: "person.circle.fill")
                             .resizable()
                             .frame(width: 40, height: 40)
-                        Text(settings.username)
+                        TextField("Username", text: $settings.username)
                             .font(Font.custom("", size: 24))
                     }
                     .padding([.top, .bottom], 2)
-                    .padding(.leading, 25)
+                    .padding(.leading, 5)
                     .cornerRadius(5)
                     Spacer(minLength: 20)
                 }
                 .padding(.top, 20)
                 Spacer()
             }
-            .navigationTitle("Personal Info")
+            .navigationTitle("Edit Personal Info")
             .toolbar {
                 Button {
-                    showingSheet.toggle()
+                    dismiss()
                 } label: {
-                    Text("Edit")
+                    Image(systemName: "multiply.circle")
                 }
-            }
-            .sheet(isPresented: $showingSheet) {
-                EditProfileView()
             }
             .environmentObject(settings)
         }
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
+struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        EditProfileView()
     }
 }
