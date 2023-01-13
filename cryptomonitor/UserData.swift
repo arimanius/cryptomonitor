@@ -10,7 +10,7 @@ import Foundation
 extension UserDefaults {
     var pairList: [Pair] {
         get {
-            if let data = UserDefaults.standard.value(forKey: "pairList") as? Data {
+            if let data = value(forKey: "pairList") as? Data {
                 return (try? PropertyListDecoder().decode([Pair].self, from: data))!
             }
             return []
@@ -20,12 +20,9 @@ extension UserDefaults {
         }
     }
     
-    var username: String {
+    var username: String? {
         get {
-            if let data = UserDefaults.standard.value(forKey: "username") as? String {
-                return data
-            }
-            return ""
+            return string(forKey: "username")
         }
         set {
             set(newValue, forKey: "username")
@@ -39,9 +36,9 @@ class SettingsStore: ObservableObject{
             UserDefaults.standard.pairList = self.pairList
         }
     }
-    @Published var username: String = UserDefaults.standard.username {
+    @Published var username: String? = UserDefaults.standard.username {
         didSet {
-            UserDefaults.standard.username = self.username
+            UserDefaults.standard.username = (self.username?.isEmpty ?? false) ? self.username : nil
         }
     }
 }

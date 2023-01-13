@@ -42,10 +42,6 @@ struct CurrenciesView: View {
 
 struct CurrenciesView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            CurrenciesView();
-            CurrenciesView()
-                .preferredColorScheme(.dark)
-        }
+        CurrenciesView()
     }
 }

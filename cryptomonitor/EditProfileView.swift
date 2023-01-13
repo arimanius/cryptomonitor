@@ -8,38 +8,33 @@
 import SwiftUI
 
 struct EditProfileView: View {
-    @ObservedObject var settings = SettingsStore()
+    @EnvironmentObject var settings: SettingsStore
+    @State var username: String = ""
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView {
-            VStack{
-                HStack {
-                    Spacer(minLength: 20)
-                    HStack(alignment: .center, spacing: 10) {
-                        Image(systemName: "person.circle.fill")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                        TextField("Username", text: $settings.username)
-                            .font(Font.custom("", size: 24))
-                    }
-                    .padding([.top, .bottom], 2)
-                    .padding(.leading, 5)
-                    .cornerRadius(5)
-                    Spacer(minLength: 20)
+            List {
+                HStack(alignment: .center, spacing: 10) {
+                    Image(systemName: "person.circle")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                    TextField("Username", text: $username)
+                        .font(.title2)
                 }
-                .padding(.top, 20)
-                Spacer()
             }
             .navigationTitle("Edit Personal Info")
             .toolbar {
                 Button {
+                    settings.username = username
                     dismiss()
                 } label: {
-                    Image(systemName: "multiply.circle")
+                    Text("Submit")
                 }
             }
-            .environmentObject(settings)
+            .task {
+                username = settings.username ?? ""
+            }
         }
     }
 }
@@ -47,5 +42,6 @@ struct EditProfileView: View {
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
         EditProfileView()
+            .environmentObject(SettingsStore())
     }
 }

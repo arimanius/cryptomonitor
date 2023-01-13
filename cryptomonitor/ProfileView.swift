@@ -13,24 +13,19 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationView {
-            VStack{
-                HStack {
-                    HStack(alignment: .center, spacing: 10) {
-                        Image(systemName: "person.circle.fill")
+            List {
+                Section(header: Text("Personal Info")) {
+                    HStack(spacing: 20) {
+                        Image(systemName: "person.circle")
                             .resizable()
                             .frame(width: 40, height: 40)
-                        Text(settings.username)
-                            .font(Font.custom("", size: 24))
+                        Text(settings.username ?? "Not set")
+                            .font(.title2)
+                            .foregroundColor(settings.username != nil ? .primary : .gray)
                     }
-                    .padding([.top, .bottom], 2)
-                    .padding(.leading, 25)
-                    .cornerRadius(5)
-                    Spacer(minLength: 20)
                 }
-                .padding(.top, 20)
-                Spacer()
             }
-            .navigationTitle("Personal Info")
+            .navigationTitle("Profile")
             .toolbar {
                 Button {
                     showingSheet.toggle()

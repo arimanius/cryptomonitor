@@ -22,7 +22,7 @@ extension Binding {
 struct CurrencyView: View {
     var pair: Pair
     @Binding var currentOhlc: OHLC?
-    @State var from: Date = Date()
+    @State var from: Date = Date().addingTimeInterval(-10*24*60*60)
     @State var until: Date = Date()
     @State var error: Swift.Error? = nil
     @State var ohlcs: [OHLC] = []
