@@ -28,7 +28,7 @@ struct CurrenciesView: View {
                     Image(systemName: "plus.circle")
                 }
             }
-            .fullScreenCover(isPresented: $showingSheet) {
+            .sheet(isPresented: $showingSheet) {
                 AddPairView()
             }
             .environmentObject(settings)
